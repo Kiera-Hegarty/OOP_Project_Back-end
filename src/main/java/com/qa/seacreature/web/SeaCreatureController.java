@@ -30,20 +30,20 @@ public class SeaCreatureController {
 	//Create 201
 	@PostMapping("/create")
 	public ResponseEntity<SeaCreature> createSeaCreature(@RequestBody SeaCreature s){
-		SeaCreature created = this.service.createSeaCreature(s);
+		SeaCreature created = this.service.create(s);
 		ResponseEntity<SeaCreature> response = new ResponseEntity<SeaCreature>(created, HttpStatus.CREATED);
 		return response;
 	}
 	
 	//Read 200 - ok
 	@GetMapping("/getAll")
-	public ResponseEntity<List<SeaCreature>> getAllCraetures(){
-		return ResponseEntity.ok(this.service.getAllCreatures());
+	public ResponseEntity<List<SeaCreature>> getAll(){
+		return ResponseEntity.ok(this.service.getAll());
 	}
 	
 	@GetMapping("/getById/{id}") //200 - ok
-	public SeaCreature getSeaCreature(@PathVariable Integer id) {
-		return this.service.getSeaCreature(id);
+	public SeaCreature getById(@PathVariable Integer id) {
+		return this.service.getById(id);
 	}
 	
 	@GetMapping("/getByName/{name}")
@@ -60,16 +60,16 @@ public class SeaCreatureController {
 	
 	//Replace 202 - accepted
 	@PutMapping("/replace/{id}")
-	public ResponseEntity<SeaCreature> replaceSeaCreature(@PathVariable Integer id, @RequestBody SeaCreature newSeaCreature){
-		SeaCreature body = this.service.replaceSeaCreature(id,  newSeaCreature);
+	public ResponseEntity<SeaCreature> replace(@PathVariable Integer id, @RequestBody SeaCreature newSeaCreature){
+		SeaCreature body = this.service.replace(id,  newSeaCreature);
 		ResponseEntity<SeaCreature> reponse = new ResponseEntity<SeaCreature>(body, HttpStatus.ACCEPTED);
 		return reponse;
 	}
 	
 	//Remove 204 - no content
 	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<?> removeSeaCreature(@PathVariable Integer id){
-		this.service.removeSeaCreature(id);
+	public ResponseEntity<?> remove(@PathVariable Integer id){
+		this.service.remove(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
