@@ -11,7 +11,7 @@ import com.qa.seacreature.domain.SeaCreature;
 import com.qa.seacreature.repo.SeaCreatureRepo;
 
 @Service
-public class SeaCreatureService {
+public class SeaCreatureService implements ServiceInterface<SeaCreature>{
 	
 	private SeaCreatureRepo repo;
 	
@@ -22,17 +22,17 @@ public class SeaCreatureService {
 	}
 	
 	//Create
-	public SeaCreature createSeaCreature(SeaCreature s) {
+	public SeaCreature create(SeaCreature s) {
 		SeaCreature created = this.repo.save(s);
 		return created;
 	}
 	
 	//Read
-	public List<SeaCreature> getAllCreatures(){
+	public List<SeaCreature> getAll(){
 		return this.repo.findAll();
 	}
 	
-	public SeaCreature getSeaCreature(Integer id) {
+	public SeaCreature getById(Integer id) {
 		Optional<SeaCreature> found = this.repo.findById(id);
 		return found.get();
 	}
@@ -48,7 +48,7 @@ public class SeaCreatureService {
 	}
 	
 	//replace
-	public SeaCreature replaceSeaCreature(Integer id, SeaCreature newSeaCreature) {
+	public SeaCreature replace(Integer id, SeaCreature newSeaCreature) {
 		SeaCreature existing = this.repo.findById(id).get();
 		existing.setName(newSeaCreature.getName());
 		existing.setMammal(newSeaCreature.getMammal());
@@ -59,7 +59,7 @@ public class SeaCreatureService {
 	}
 	
 	//Remove
-	public void removeSeaCreature(@PathVariable Integer id) {
+	public void remove(@PathVariable Integer id) {
 		this.repo.deleteById(id);
 	}
 
