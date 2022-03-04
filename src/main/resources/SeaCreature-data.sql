@@ -1,0 +1,2 @@
+insert into sea_creature (dorsal_fin, life_expectancy, mammal, name) values (false, 3, false, 'Seahorse');
+insert into sea_creature (dorsal_fin, life_expectancy, mammal, name) values (true, 60, true, 'Orca');
