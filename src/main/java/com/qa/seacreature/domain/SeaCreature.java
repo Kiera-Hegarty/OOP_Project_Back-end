@@ -12,7 +12,7 @@ public class SeaCreature {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false, unique = true)
+	@Column(unique = true)
 	private String name;
 	private Boolean mammal;
 	private Boolean dorsalFin;
